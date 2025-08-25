@@ -1,4 +1,4 @@
-# 🚀 medusa-store-starter Monorepo Guide
+# 🚀 Medusa Store Monorepo Guide
 
 This guide explains how to set up a **production-ready npm workspace monorepo** with:
 * **backend** → MedusaJS backend (as a git submodule on the `master` branch)
@@ -11,7 +11,7 @@ This guide explains how to set up a **production-ready npm workspace monorepo** 
 ## 1. Create the workspace root
 
 ```bash
-mkdir medusa-store-starter && cd medusa-store-starter
+mkdir medusa-store-monorepo && cd medusa-store-monorepo
 npm init -y
 ```
 
@@ -21,7 +21,7 @@ Edit the **package.json** in the root:
 
 ```json
 {
-  "name": "medusa-store-starter",
+  "name": "medusa-store-monorepo",
   "private": true,
   "workspaces": [
     "backend",
@@ -627,11 +627,11 @@ blob-report/
 
 ## 14. Connect to GitHub and initial setup
 
-1. Create a new GitHub repo: https://github.com/new → name it `medusa-store-starter` (leave empty).
+1. Create a new GitHub repo: https://github.com/new → name it `medusa-store-monorepo` (leave empty).
 
 2. Link your local project:
 ```bash
-git remote add origin git@github.com:<your-username>/medusa-store-starter.git
+git remote add origin git@github.com:<your-username>/medusa-store-monorepo.git
 ```
 
 3. Set up environment:
@@ -649,7 +649,7 @@ npm install
 5. Initial commit and push:
 ```bash
 git add .
-git commit -m "feat: initial monorepo setup with enhanced tooling
+git commit -m "feat: initial monorepo setup with tooling
 
 - Add MedusaJS backend as git submodule
 - Add Angular storefront with CSS
@@ -706,7 +706,7 @@ npm run dev
 ## ✅ Final Enhanced Project Structure
 
 ```
-medusa-store-starter/
+medusa-store-monorepo/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
