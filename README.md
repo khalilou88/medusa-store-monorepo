@@ -191,11 +191,9 @@ Create **.lintstagedrc.json**:
 
 ## 8. Create Docker development environment
 
-Create **docker-compose.yml**:
+Create **compose.yml**:
 
 ```yaml
-version: '3.8'
-
 services:
   postgres:
     image: postgres:15-alpine
@@ -324,17 +322,7 @@ Update **storefront/package.json** to include linting scripts:
 ```bash
 mkdir e2e && cd e2e
 npm init -y
-
-cd ..
-
-# 1. Install root dependencies first
-npm install
-
-# 2. Then install workspace-specific dependencies
-npm install -D @playwright/test typescript @types/node --workspace e2e
-
-# 3. Initialize Playwright
-cd e2e
+npm install -D @playwright/test typescript @types/node
 npx playwright install
 ```
 
