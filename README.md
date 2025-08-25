@@ -1,12 +1,13 @@
 # 🚀 Medusa Store Monorepo Guide
 
 This guide explains how to set up a **production-ready npm workspace monorepo** with:
-* **backend** → MedusaJS backend (as a git submodule on the `master` branch)
-* **storefront** → Angular storefront (using CSS)
-* **e2e** → Playwright end-to-end tests
-* **Docker** → Containerized development environment
-* **Shared tooling** → TypeScript, ESLint, Prettier configurations
-* **CI/CD** → GitHub Actions pipeline
+
+- **backend** → MedusaJS backend (as a git submodule on the `master` branch)
+- **storefront** → Angular storefront (using CSS)
+- **e2e** → Playwright end-to-end tests
+- **Docker** → Containerized development environment
+- **Shared tooling** → TypeScript, ESLint, Prettier configurations
+- **CI/CD** → GitHub Actions pipeline
 
 ## 1. Create the workspace root
 
@@ -23,11 +24,7 @@ Edit the **package.json** in the root:
 {
   "name": "medusa-store-monorepo",
   "private": true,
-  "workspaces": [
-    "backend",
-    "storefront",
-    "e2e"
-  ],
+  "workspaces": ["backend", "storefront", "e2e"],
   "scripts": {
     "dev": "concurrently \"npm run start --workspace backend\" \"npm run start --workspace storefront\"",
     "build": "npm run build --workspaces --if-present",
@@ -116,7 +113,10 @@ Create **.eslintrc.json** in the root:
   ],
   "rules": {
     "prettier/prettier": "error",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
     "@typescript-eslint/no-explicit-any": "warn",
     "no-console": ["warn", { "allow": ["warn", "error"] }]
   },
@@ -630,23 +630,27 @@ blob-report/
 1. Create a new GitHub repo: https://github.com/new → name it `medusa-store-monorepo` (leave empty).
 
 2. Link your local project:
+
 ```bash
 git remote add origin git@github.com:<your-username>/medusa-store-monorepo.git
 ```
 
 3. Set up environment:
+
 ```bash
 cp .env.example .env
 # Edit .env with your actual values
 ```
 
 4. Start development services:
+
 ```bash
 npm run docker:up
 npm install
 ```
 
 5. Initial commit and push:
+
 ```bash
 git add .
 git commit -m "feat: initial monorepo setup with tooling
@@ -666,6 +670,7 @@ git push -u origin main
 ## 15. Development workflow commands
 
 ### Daily development
+
 ```bash
 # Start all services
 npm run docker:up
@@ -682,6 +687,7 @@ npm run type-check
 ```
 
 ### Backend submodule updates
+
 ```bash
 cd backend
 git checkout master
@@ -693,7 +699,9 @@ git push
 ```
 
 ### Team onboarding
+
 New developers should run:
+
 ```bash
 git clone --recurse-submodules <repo-url>
 cp .env.example .env
@@ -729,6 +737,7 @@ medusa-store-monorepo/
 ```
 
 This enhanced setup provides:
+
 - **Containerized development** with PostgreSQL, Redis, and MinIO
 - **Shared tooling** for consistent code quality
 - **Automated testing** and CI/CD pipeline
